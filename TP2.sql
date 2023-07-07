@@ -98,6 +98,37 @@ Create Table Archives (
     Foreign key (No_Immeuble) references Immeubles(No_Immeuble)
 );
 
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('John Smith', '5141234567', '2022-09-12', '2023-09-11', '0');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Emma Johnson', '5149876543', '2023-06-03', '2023-06-20', '1');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Michael Williams', '5145557890', '2022-11-20', '2023-11-19', '0');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Sophia Davis', '5141112222', '2022-06-15', '2022-06-29', '1');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Alexander Wilson', '5148889999', '2022-10-10', '2023-10-09', '0');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Olivia Martin', '5143334444', '2022-08-05', '2023-08-05', '1');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Daniel Thompson', '5146667777', '2022-12-25', '2023-12-24', '0');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Ava Wilson', '5142223333', '2022-05-10', '2022-05-20', '1');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Matthew Taylor', '5147778888', '2022-11-01', '2023-11-01', '0');
+
+INSERT INTO Locataires (Loc_Nom, Loc_Telephone, Date_Entree, Date_Fin_Bail, Occupant)
+VALUES ('Isabella Moore', '5144445555', '2023-06-01', '2023-06-24', '1');
+
+
 INSERT INTO Chauffages (Chau_Code, Chau_Description)
 VALUES
     ('E', 'electricité');
@@ -348,3 +379,129 @@ VALUES (9, '753 Avenue des Roses', 'Property Investors Ltd', '4509876543', 8, 0.
 
 INSERT INTO Actionnaires (No_Actionnaire, Adresse, Nom_Actionnaire, Telephone, Nb_Parts, Profit_A_Distrubuer, Valeur_Part)
 VALUES (10, '246 Rue du Commerce', 'Real Estate Capital', '5144567890', 10, 0.19, 5900);
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (1, '2015-05-04', 30.2, 1, 2, 'Zakariae');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (2, '2016-07-12', 15.5, 3, 4, 'Omar');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (3, '2017-09-22', 20.8, 5, 6, 'Kenza');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (4, '2018-11-03', 12.3, 7, 8, 'Malika');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (5, '2019-01-15', 18.6, 9, 10, 'Elliot');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (6, '2020-03-27', 25.9, 6, 6, 'Houcine');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (7, '2021-05-08', 14.7, 4, 4, 'Elize');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (8, '2022-07-20', 22.4, 5, 6, 'Sami');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (9, '2023-09-01', 17.2, 7, 8, 'Nour');
+
+INSERT INTO Entretiens (No_Entretien, Ent_Date, Nb_Heures, Imm_No_Immeuble, Log_No_Logement, Emp_Emp_Nom)
+VALUES (10, '2024-11-13', 11.9, 9, 2, 'Meryeme');
+
+CREATE VIEW VAptLibre AS
+    SELECT L.No_Immeuble, L.No_Logement, L.Loyer
+    FROM Logements L
+    JOIN Immeubles I ON L.No_Immeuble = I.No_Immeuble
+    WHERE L.Nb_Chambres = 3
+    AND L.Loyer < 1750.00
+    AND I.Nb_Logements >= 25;
+
+
+update Locataires 
+set Log_No_Immeuble = 7,
+Log_No_Logement = 4
+where Loc_Nom = 'Emma Johnson';
+
+update Locataires 
+set Log_No_Immeuble = 3,
+Log_No_Logement = 6
+where Loc_Nom = 'Matthew Taylor';
+
+update Locataires 
+set Log_No_Immeuble = 3,
+Log_No_Logement = 9
+where Loc_Nom = 'Ava Wilson';
+
+update Locataires 
+set Log_No_Immeuble = 8,
+Log_No_Logement = 5
+where Loc_Nom = 'Daniel Thompson';
+
+update Locataires 
+set Log_No_Immeuble = 3,
+Log_No_Logement = 4
+where Loc_Nom = 'Olivia Martin';
+
+update Locataires 
+set Log_No_Immeuble = 3,
+Log_No_Logement = 3
+where Loc_Nom = 'Alexander Wilson';
+
+update Locataires 
+set Log_No_Immeuble = 1,
+Log_No_Logement = 2
+where Loc_Nom = 'Sophia Davis';
+
+update Locataires 
+set Log_No_Immeuble = 2,
+Log_No_Logement = 2
+where Loc_Nom = 'Isabella Moore';
+
+update Locataires 
+set Log_No_Immeuble = 1,
+Log_No_Logement = 1
+where Loc_Nom = 'John Smith';
+
+update Locataires 
+set Log_No_Immeuble = 2,
+Log_No_Logement = 1
+where Loc_Nom = 'Michael Williams';
+
+
+create view Vreparation as 
+SELECT T.Description_Metier
+FROM TAUX_metiers T
+JOIN Employes E ON E.Taux_Code_Metier = T.Code_Metier
+JOIN Entretiens En ON En.Emp_Emp_Nom = E.Emp_Nom
+JOIN Logements L ON L.No_Immeuble = En.Imm_No_Immeuble
+JOIN Locataires Lo ON L.No_Logement = Lo.Log_No_Logement
+JOIN Immeubles Im USING (No_Immeuble)
+JOIN Villes V ON V.Nom_Ville = Im.Vil_Nom_Ville
+WHERE (V.Nom_Ville = 'St Bruno' OR V.Nom_Ville = 'Boucherville')
+AND Lo.Date_Entree BETWEEN '2023-06-01' AND '2023-06-25' 
+AND Lo.Date_Fin_Bail BETWEEN '2023-06-01' AND '2023-06-25'
+AND L.Foyer = 'O' AND L.Salle_A_Diner = 'N'
+;
+
+create view VPetitApt as
+select distinct * from Immeubles I
+join Logements L using (No_Immeuble)
+where L.Nb_Chambres <= 2;
+
+create view VConcierges as 
+select C.Nom_Concierge from Concierges C
+join Immeubles I
+on I.Con_Nom_Concierge = C.Nom_Concierge
+join Villes V
+on V.Nom_Ville = I.Vil_Nom_Ville
+join Logements L
+using(No_Immeuble)
+where V.Nom_Ville = 'Longueuil'
+and L.meuble = 'S' and L.foyer = 'O'
+ORDER BY C.Nom_Concierge DESC;
+
+--Q10
+DELETE FROM Locataires
+WHERE Date_Fin_Bail < '2022-07-01';
