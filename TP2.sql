@@ -289,6 +289,9 @@ VALUES (9, '234 avenue Edmonton', 6, 16, 2023, 2900, 180, 13000, 2800, 10, 26000
 INSERT INTO Immeubles (No_Immeuble, Adresse, Nb_Etages, Nb_Logements, Annee_En_Cours, Assurance, Conciergerie, Cumul_Loyer, Entretien, Evaluation, Prix_Achat, Hypotheque, Taux_Hypotheque, Vil_Nom_Ville, con_nom_concierge)
 VALUES (10, '567 avenue Winnipeg', 5, 12, 2023, 2800, 150, 12000, 2500, 9, 220000, 3200, 30000, 'Boucherville', 'Amina');
 
+INSERT INTO Immeubles (No_Immeuble, Adresse, Nb_Etages, Nb_Logements, Annee_En_Cours, Assurance, Conciergerie, Cumul_Loyer, Entretien, Evaluation, Prix_Achat, Hypotheque, Taux_Hypotheque, Vil_Nom_Ville, con_nom_concierge)
+VALUES (1297, '7832 rue Mohammedia', 10, 30, 2019, 2600, 150, 12000, 2800, 8, 320000, 3800, 35000, 'St Bruno', 'Sara');
+
 INSERT INTO Archives (No_Immeuble, Annee, Evaluation, Taxes, Frais_Hypotheque, Conciergerie, Assurances, Entretien, Revenu_Loyer)
 VALUES (1, 2021, 9, 0.23, 3573.34, 2573, 573, 1523.64, 800);
 
@@ -501,6 +504,63 @@ using(No_Immeuble)
 where V.Nom_Ville = 'Longueuil'
 and L.meuble = 'S' and L.foyer = 'O'
 ORDER BY C.Nom_Concierge DESC;
+
+--Q7
+CREATE OR REPLACE FUNCTION f_loyer(p_no_immeuble IN NUMBER)
+  RETURN NUMBER
+IS
+  v_revenu_total NUMBER := 0;
+BEGIN
+  SELECT SUM(Loyer)
+  INTO v_revenu_total
+  FROM Logements L
+  join Locataires Lo
+  on L.No_Logement = Lo.Log_No_Logement
+  WHERE L.No_Immeuble = p_no_immeuble
+    AND EXTRACT(MONTH FROM Lo.Date_Entree) = '06';
+
+  RETURN v_revenu_total;
+END;
+/
+
+CREATE OR REPLACE VIEW v_loyer AS
+SELECT No_Immeuble, f_loyer(No_Immeuble) AS Revenu_Total
+FROM Immeubles;
+
+--Q8
+CREATE OR REPLACE PROCEDURE sp_archive(p_id IN NUMBER)
+IS
+BEGIN
+    INSERT INTO archives (No_Immeuble, Annee, Evaluation, Taxes, Frais_Hypotheque, Conciergerie, Assurances, Entretien, Revenu_Loyer)
+    SELECT No_Immeuble, Annee_En_Cours, Evaluation, Taux_Hypotheque, Hypotheque, Conciergerie, Assurance, Entretien, Cumul_Loyer
+    FROM Immeubles
+    WHERE No_Immeuble = p_id;
+    
+    COMMIT;
+END;
+/
+
+begin 
+    sp_archive(1297);
+end;
+/
+
+--Q9
+CREATE OR REPLACE PROCEDURE sp_augmentation(p_type_chauffage IN VARCHAR2, p_pourcentage IN NUMBER)
+IS
+BEGIN
+  UPDATE Logements
+  SET Loyer = Loyer * (1 + p_pourcentage/100)
+  WHERE Chauffage = p_type_chauffage;
+
+  COMMIT;
+END;
+/
+
+BEGIN
+  sp_augmentation('G', 7);
+END;
+/
 
 --Q10
 DELETE FROM Locataires
