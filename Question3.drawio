@@ -1,9 +1,26 @@
-<mxfile host="app.diagrams.net" modified="2023-07-24T16:49:13.754Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" version="21.6.5" etag="mMSspZNVVhELEoCoOW4Y" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-24T17:03:51.184Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="1dX2oqi5PfaY42cxQV14" version="21.6.5" type="github">
   <diagram name="Page-1" id="v_RKdQxCPGK-J3019gcM">
-    <mxGraphModel>
+    <mxGraphModel dx="1114" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <object label="Immeubles" No_Immeuble="PK" Adresse="" Nb_Etages="" Nb_Logements="" Annee_En_Cours="" Assurance="" Conciergerie="" Cumul_Loyer="" Entretien="" Evaluation="" Prix_Achat="" Hypotheque="" Taux_Hypotheque="" Vil_Nom_Ville="FK" Con_Nom_Concierge="PK" id="YRbUT3Flur1B0mu0PBYt-1">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+            <mxGeometry x="20" y="170" width="120" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="YRbUT3Flur1B0mu0PBYt-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YRbUT3Flur1B0mu0PBYt-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YRbUT3Flur1B0mu0PBYt-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YRbUT3Flur1B0mu0PBYt-5" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
